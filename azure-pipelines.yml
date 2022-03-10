@@ -7,15 +7,13 @@ trigger:
 - main
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: ubuntu-latest
 
 variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
+- script: dotnet build --configuration $(buildConfiguration)
 
 - task: NuGetCommand@2
   inputs:
